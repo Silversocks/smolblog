@@ -33,7 +33,7 @@ class post:
     
     def read(self):
         print("\t[crimson]"+self.title+"[/crimson]\n|-------------------------------------------------------------------------|")
-        print("\n\t"+self.content+"\n\n|-------------------------------------------------------------------------|\n\n")
+        print("\n\t"+textwrap.fill(self.content,28)+"\n\n|-------------------------------------------------------------------------|\n\n")
         ch=int(input("1.More post info\n2.Next\n3.Back  : "))
         if ch==1:
             print("author: "+self.author+"\n\n","date created: "+str(self.date))
@@ -166,7 +166,7 @@ def mainmenu(h,user):
             pass
     else:
         user=os.path.basename(os.getcwd())
-        c=int(input("1.View posts\n2.Write post\n3.Edit post\n4.Your posts : "))
+        c=int(input("1.View posts\n2.Write post\n3.Edit post\n4.Your posts\n5.Log out : "))
         if c==1:
             for i in posts:
                 r=i.read()
@@ -208,8 +208,8 @@ def mainmenu(h,user):
                 posts[-1].write()
             else:
                 mainmenu(h,user)
+        elif c==5:
+            logout()
 
-
-#enter ascii art stuff
 while True:
     h=mainmenu(h,user)
